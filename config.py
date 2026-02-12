@@ -33,6 +33,6 @@ COMPANY_PHONE = "+91 63668 91448"
 
 # Branding Colors
 COLOR_PRIMARY = "#111"      # Dark
-COLOR_ACCENT = "#E91E63"    # Pink
+COLOR_ACCENT = "#f97415"    # WebBaba orange
 COLOR_TEXT = "#fff"         # White
 

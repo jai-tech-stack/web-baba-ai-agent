@@ -83,11 +83,12 @@ def offline_fallback(message):
         return "I'm here to help with website design, development, quotes, and project planning. Could you tell me more about what you're looking for?"
 
 def detect_lead_intent(message):
-    """Detect if user wants to work with Web Baba"""
+    """Detect if user wants to work with Web Baba or is asking about pricing/quote"""
     intent_keywords = [
         'interested', 'want', 'need', 'get started', 'quote', 'hire', 'work',
         'project', 'build', 'design', 'website', 'yes', 'sure', 'contact',
-        'email', 'phone', 'call'
+        'email', 'phone', 'call', 'pricing', 'price', 'packages', 'package',
+        'how much', 'cost', 'start a project'
     ]
     message_lower = message.lower()
     return any(keyword in message_lower for keyword in intent_keywords)
@@ -155,17 +156,12 @@ AI response:"""
 def save_to_google_sheets(lead_data):
     """Save lead information to Google Sheets"""
     try:
-        # Parse credentials from config
         creds_json = json.loads(GOOGLE_SHEET_CREDS)
         scope = ['https://spreadsheets.google.com/feeds',
                  'https://www.googleapis.com/auth/drive']
         creds = Credentials.from_service_account_info(creds_json, scopes=scope)
         client = gspread.authorize(creds)
-        
-        # Open the sheet
         sheet = client.open_by_key(GOOGLE_SHEET_ID).sheet1
-        
-        # Append row
         row = [
             lead_data.get('name', ''),
             lead_data.get('email', ''),
@@ -238,8 +234,6 @@ def save_lead():
     try:
         lead_data = request.json
         user_id = lead_data.get('user_id', 'anonymous')
-        
-        # Update user memory with lead info
         update_user_memory(user_id, {
             'name': lead_data.get('name'),
             'email': lead_data.get('email'),
@@ -247,28 +241,13 @@ def save_lead():
             'project_type': lead_data.get('project_type', ''),
             'is_lead': True
         })
-        
-        # Save to Google Sheets
         success = save_to_google_sheets(lead_data)
-        
         if success:
-            return jsonify({
-                'success': True,
-                'message': 'Thank you! We\'ll contact you soon.'
-            })
-        else:
-            # Still return success if memory saved, even if Sheets fails
-            return jsonify({
-                'success': True,
-                'message': 'Thank you! Your information has been saved.'
-            })
-            
+            return jsonify({'success': True, 'message': 'Thank you! We\'ll contact you soon.'})
+        return jsonify({'success': True, 'message': 'Thank you! Your information has been saved.'})
     except Exception as e:
         print(f"Error in /lead: {e}")
-        return jsonify({
-            'success': True,
-            'message': 'Thank you! We received your information.'
-        }), 200
+        return jsonify({'success': True, 'message': 'Thank you! We received your information.'}), 200
 
 @app.route('/health', methods=['GET'])
 def health_check():

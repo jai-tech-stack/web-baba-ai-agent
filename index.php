@@ -30,6 +30,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://webbaba.com/">
     
+    <!-- Google Analytics: replace G-XXXXXXXXXX with your GA4 Measurement ID -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+    
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
@@ -43,7 +47,7 @@
       "name": "WebBaba",
       "image": "https://webbaba.com/images/logo.png",
       "url": "https://webbaba.com",
-      "telephone": "+91-555-123-4567",
+      "telephone": "+91 63668 91448",
       "priceRange": "₹₹",
       "address": {
         "@type": "PostalAddress",
@@ -69,7 +73,7 @@
         "closes": "23:59"
       },
       "sameAs": [
-        "https://www.facebook.com/webbaba",
+        "https://www.facebook.com/profile.php?id=61582170124254",
         "https://twitter.com/webbaba",
         "https://www.linkedin.com/company/webbaba"
       ],
@@ -96,6 +100,29 @@
           "name": "Enterprise Package",
           "price": "75000",
           "priceCurrency": "INR"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How fast can I get my website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We deliver custom websites in 48 hours for our Starter package. Professional and Enterprise packages may take 5-15 days depending on scope." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Starter package include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Starter includes up to 5 pages, mobile responsive design, basic SEO, contact form, 48-hour delivery, and 30-day support. Price ₹19,999." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you use templates?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Every website is custom-designed for your business and target audience." }
         }
       ]
     }
@@ -329,6 +356,31 @@
             font-size: 14px;
         }
          
+        .hero-chat-cta {
+            margin-top: 20px;
+            font-size: 15px;
+            opacity: 0.95;
+        }
+        .hero-chat-link, .pricing-chat-link {
+            background: none;
+            border: none;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: inherit;
+            padding: 0;
+            font-weight: 600;
+        }
+        .hero-chat-link:hover, .pricing-chat-link:hover {
+            opacity: 0.9;
+        }
+        .pricing-chat-cta {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .pricing-chat-link {
+            color: var(--orange);
+        }
         .scroll-indicator {
             margin-top: 40px;
             font-size: 32px;
@@ -962,7 +1014,7 @@
             </div>
         </div>
         <a href="#contact" class="btn-primary">Start Your Project Now</a>
-        
+        <p class="hero-chat-cta">Need help choosing? <button type="button" class="hero-chat-link" id="heroChatCta">Chat with our AI assistant</button></p>
     </section>
 
     <section class="why-choose" id="services">
@@ -1058,7 +1110,7 @@
     <section class="pricing" id="pricing">
         <h2>Transparent Pricing</h2>
         <p>Choose the package that fits your business needs. All packages include our 48-hour delivery guarantee.</p>
-        
+        <p class="pricing-chat-cta">Need help choosing a package? <button type="button" class="pricing-chat-link" id="pricingChatCta">Chat with our AI assistant</button></p>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <h3>Starter</h3>
@@ -1210,7 +1262,7 @@
                     <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
                     <div class="contact-details">
                         <h4>Call Us</h4>
-                        <p><a href="tel:63668 91448"></a>+91 63668 91448</a></p>
+                        <p><a href="tel:+916366891448">+91 63668 91448</a></p>
                     </div>
                 </div>
                 
@@ -1237,7 +1289,7 @@
                 <p>WebBaba is a web development company specializing in delivering high-quality, responsive websites with rapid-fire turnaround. Our team of expert developers, designers, and strategists work collaboratively to bring your vision to life, ensuring that each website is not just beautiful but functional.</p>
                 <div class="footer-contact">
                     <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="position: relative;top: 4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg> <a style="color:white; text-decoration:none;" href="mailto:info@web-baba.com">info@web-baba.com</a></p>
-                    <p><svg style="position: relative; top: 4px;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:63668 91448"></a>+91 63668 91448</a></p>
+                    <p><svg style="position: relative; top: 4px;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:+916366891448">+91 63668 91448</a></p>
                 </div>
             </div>
             
@@ -1385,5 +1437,793 @@
             });
         });
     </script>
+    <!-- Web Baba AI Chatbot -->
+<style>
+    /* Web Baba Chatbot Styles */
+    #webbaba-chatbot {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 10000;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .chatbot-toggle {
+        width: 60px;
+        height: 60px;
+        background: #111;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .chatbot-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .chatbot-toggle svg {
+        color: #f97415;
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+    }
+
+    .chatbot-toggle .close-icon {
+        display: none;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .chatbot-toggle.open svg {
+        display: none;
+    }
+
+    .chatbot-toggle.open .close-icon {
+        display: block;
+    }
+
+    .chatbot-window {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chatbot-header {
+        background: #111;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chatbot-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .chatbot-title svg {
+        color: #f97415;
+        width: 20px;
+        height: 20px;
+    }
+
+    .chatbot-minimize {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chatbot-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
+    }
+
+    .message {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    .message.user {
+        justify-content: flex-end;
+    }
+
+    .message-content {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        max-width: 80%;
+    }
+
+    .message.user .message-content {
+        flex-direction: row-reverse;
+    }
+
+    .message-bubble {
+        background: white;
+        padding: 12px 16px;
+        border-radius: 18px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .message.user .message-bubble {
+        background: #f97415;
+        color: white;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .bot-avatar {
+        background: #111;
+        color: white;
+    }
+
+    .user-avatar {
+        background: #f97415;
+        color: white;
+    }
+
+    .typing-indicator .message-bubble {
+        background: white;
+        padding: 12px 16px;
+    }
+
+    .typing-dots {
+        display: flex;
+        gap: 4px;
+    }
+
+    .typing-dots span {
+        width: 6px;
+        height: 6px;
+        background: #f97415;
+        border-radius: 50%;
+        animation: typing 1.4s infinite ease-in-out;
+    }
+
+    .typing-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .typing-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+        0%, 60%, 100% {
+            transform: translateY(0);
+            opacity: 0.5;
+        }
+        30% {
+            transform: translateY(-10px);
+            opacity: 1;
+        }
+    }
+
+    .chatbot-lead-form {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+    }
+
+    .lead-form-content h3 {
+        color: #111;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .lead-form-content p {
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .lead-form-content input,
+    .lead-form-content textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .lead-form-content input:focus,
+    .lead-form-content textarea:focus {
+        outline: none;
+        border-color: #f97415;
+    }
+
+    .lead-form-content textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .lead-form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+    }
+
+    .lead-form-actions button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #skipLeadBtn {
+        background: #f0f0f0;
+        color: #666;
+    }
+
+    #submitLeadBtn {
+        background: #f97415;
+        color: white;
+    }
+
+    .lead-form-actions button:hover {
+        transform: translateY(-1px);
+    }
+
+    .chatbot-input-area {
+        padding: 15px 20px;
+        background: white;
+        border-top: 1px solid #eee;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    #chatInput {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    #chatInput:focus {
+        border-color: #f97415;
+    }
+
+    #sendBtn {
+        width: 40px;
+        height: 40px;
+        background: #f97415;
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    #sendBtn:hover {
+        background: #e0650f;
+        transform: scale(1.05);
+    }
+
+    #sendBtn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 480px) {
+        .chatbot-window {
+            width: calc(100vw - 40px);
+            height: calc(100vh - 100px);
+            bottom: 80px;
+            right: 20px;
+            left: 20px;
+        }
+    }
+
+    /* Scrollbar styling */
+    .chatbot-messages::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb {
+        background: #f97415;
+        border-radius: 2px;
+    }
+
+    .chatbot-quick-replies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+    }
+    .chatbot-quick-reply {
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 18px;
+        padding: 8px 14px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #333;
+    }
+    .chatbot-quick-reply:hover {
+        background: #f97415;
+        color: white;
+        border-color: #f97415;
+    }
+</style>
+
+<!-- Google Analytics / GTM placeholder: add your GA4 ID for chatbot events -->
+<script>
+window.webbabaTrack = function(eventName, params) {
+    if (typeof gtag === 'function') gtag('event', eventName, params || {});
+    if (typeof dataLayer !== 'undefined') dataLayer.push({ event: eventName, ...(params || {}) });
+};
+</script>
+
+<script>
+/**
+ * Web Baba AI Chatbot Frontend
+ * Proactive greeting, quick replies, exit intent, analytics
+ */
+
+var WEBBABA_CHATBOT_API = 'https://web-production-98b93.up.railway.app';
+
+class WebBabaChatbot {
+    constructor(config = {}) {
+        this.apiUrl = config.apiUrl || WEBBABA_CHATBOT_API;
+        this.userId = this.getUserId();
+        this.isOpen = false;
+        this.isLeadFormVisible = false;
+        this.conversation = [];
+        this.userName = '';
+        this.exitIntentShown = false;
+        this._openSource = null;
+        this.quickReplies = [
+            'What are your packages?',
+            'Get a quote',
+            'How fast can you deliver?',
+            'I want to start a project'
+        ];
+        
+        this.init();
+    }
+
+    getUserId() {
+        // Get or create user ID from localStorage
+        let userId = localStorage.getItem('webbaba_chatbot_user_id');
+        if (!userId) {
+            userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('webbaba_chatbot_user_id', userId);
+        }
+        return userId;
+    }
+
+    init() {
+        this.createWidget();
+        this.renderQuickReplies();
+        this.loadConversation();
+        this.addEventListeners();
+        this.setupExitIntent();
+        this.setupPageCtas();
+    }
+
+    renderQuickReplies() {
+        const container = document.getElementById('welcomeQuickReplies');
+        if (!container) return;
+        container.innerHTML = this.quickReplies.map(text =>
+            '<button type="button" class="chatbot-quick-reply" data-msg="' + this.escapeHtml(text) + '">' + this.escapeHtml(text) + '</button>'
+        ).join('');
+    }
+
+    setupPageCtas() {
+        var self = this;
+        ['heroChatCta', 'pricingChatCta'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.addEventListener('click', function() { self.openAndTrack(); });
+        });
+    }
+
+    openAndTrack() {
+        this._openSource = 'cta';
+        if (!this.isOpen) this.toggleChatbot();
+    }
+
+    setupExitIntent() {
+        var self = this;
+        document.addEventListener('mouseout', function(e) {
+            if (self.exitIntentShown || self.isOpen) return;
+            if (e.clientY < 10 && e.relatedTarget === null) {
+                self.exitIntentShown = true;
+                self._openSource = 'exit_intent';
+                self.toggleChatbot();
+                self.addMessage("Leaving so soon? Chat for a free quick quote—we reply within 2 hours! 🚀", 'bot');
+            }
+        }, { passive: true });
+    }
+
+    createWidget() {
+        // Create widget container
+        const widget = document.createElement('div');
+        widget.id = 'webbaba-chatbot';
+        widget.innerHTML = `
+            <div class="chatbot-toggle" id="chatbotToggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="close-icon">×</span>
+            </div>
+            
+            <div class="chatbot-window" id="chatbotWindow">
+                <div class="chatbot-header">
+                    <div class="chatbot-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Web Baba Assistant
+                    </div>
+                    <button class="chatbot-minimize" id="chatbotMinimize">×</button>
+                </div>
+                
+                <div class="chatbot-messages" id="chatbotMessages">
+                    <div class="message bot" id="welcomeMessage">
+                        <div class="message-content">
+                            <div class="avatar bot-avatar">WB</div>
+                            <div class="message-bubble">
+                                👋 Need a custom website in 48 hours? Ask me about packages, pricing, or timelines—or get a quick quote!
+                            </div>
+                            <div class="chatbot-quick-replies" id="welcomeQuickReplies"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-lead-form" id="leadForm">
+                    <div class="lead-form-content">
+                        <h3>Let's get started!</h3>
+                        <p>Tell us a bit about yourself:</p>
+                        <input type="text" id="leadName" placeholder="Your Name" required>
+                        <input type="email" id="leadEmail" placeholder="Your Email" required>
+                        <input type="tel" id="leadPhone" placeholder="Phone (optional)">
+                        <textarea id="leadMessage" placeholder="Project details (optional)"></textarea>
+                        <div class="lead-form-actions">
+                            <button id="skipLeadBtn">Skip</button>
+                            <button id="submitLeadBtn">Send</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-input-area">
+                    <input type="text" id="chatInput" placeholder="Type your message...">
+                    <button id="sendBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(widget);
+    }
+
+    addEventListeners() {
+        // Toggle chatbot
+        document.getElementById('chatbotToggle').addEventListener('click', () => {
+            this.toggleChatbot();
+        });
+
+        // Minimize chatbot
+        document.getElementById('chatbotMinimize').addEventListener('click', () => {
+            this.toggleChatbot();
+        });
+
+        // Send message
+        document.getElementById('sendBtn').addEventListener('click', () => {
+            this.sendMessage();
+        });
+
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.sendMessage();
+            }
+        });
+
+        // Lead form actions
+        document.getElementById('submitLeadBtn').addEventListener('click', () => {
+            this.submitLead();
+        });
+
+        document.getElementById('skipLeadBtn').addEventListener('click', () => {
+            this.hideLeadForm();
+        });
+
+        document.getElementById('chatbotMessages').addEventListener('click', (e) => {
+            var btn = e.target.closest('.chatbot-quick-reply');
+            if (btn && btn.dataset.msg) {
+                document.getElementById('chatInput').value = btn.dataset.msg;
+                this.sendMessage();
+            }
+        });
+    }
+
+    toggleChatbot() {
+        const window = document.getElementById('chatbotWindow');
+        const toggle = document.getElementById('chatbotToggle');
+        
+        this.isOpen = !this.isOpen;
+        
+        if (this.isOpen) {
+            window.style.display = 'flex';
+            toggle.classList.add('open');
+            var source = this._openSource || 'widget';
+            this._openSource = null;
+            if (window.webbabaTrack) window.webbabaTrack('chatbot_open', { source: source });
+        } else {
+            window.style.display = 'none';
+            toggle.classList.remove('open');
+        }
+    }
+
+    async sendMessage() {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        
+        if (!message) return;
+        
+        // Add user message to UI
+        this.addMessage(message, 'user');
+        input.value = '';
+        if (window.webbabaTrack) window.webbabaTrack('chatbot_message_sent', { message_length: message.length });
+        
+        // Show typing indicator
+        this.showTypingIndicator();
+        
+        try {
+            // Send to backend
+            const response = await fetch(`${this.apiUrl}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: message,
+                    user_id: this.userId
+                })
+            });
+            
+            const data = await response.json();
+            
+            // Hide typing indicator
+            this.hideTypingIndicator();
+            
+            // Add bot response
+            this.addMessage(data.response, 'bot');
+            
+            // Check if we need lead info
+            if (data.needs_lead_info && !this.isLeadFormVisible) {
+                this.showLeadForm();
+            }
+            
+            // Update userName if available
+            if (data.user_name && !this.userName) {
+                this.userName = data.user_name;
+            }
+            
+        } catch (error) {
+            console.error('Error sending message:', error);
+            this.hideTypingIndicator();
+            this.addMessage("Sorry, I'm having trouble connecting. Please try again in a moment.", 'bot');
+        }
+    }
+
+    addMessage(text, role) {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        
+        if (role === 'bot') {
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="avatar bot-avatar">WB</div>
+                    <div class="message-bubble">${this.escapeHtml(text)}</div>
+                </div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="message-bubble">${this.escapeHtml(text)}</div>
+                    <div class="avatar user-avatar">You</div>
+                </div>
+            `;
+        }
+        
+        messagesContainer.appendChild(messageDiv);
+        this.scrollToBottom();
+        
+        // Save to conversation
+        this.conversation.push({ role, text });
+        this.saveConversation();
+    }
+
+    showTypingIndicator() {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        const indicator = document.createElement('div');
+        indicator.className = 'message bot typing-indicator';
+        indicator.id = 'typingIndicator';
+        indicator.innerHTML = `
+            <div class="message-content">
+                <div class="avatar bot-avatar">WB</div>
+                <div class="message-bubble">
+                    <div class="typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        `;
+        messagesContainer.appendChild(indicator);
+        this.scrollToBottom();
+    }
+
+    hideTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    showLeadForm() {
+        this.isLeadFormVisible = true;
+        document.getElementById('leadForm').style.display = 'block';
+    }
+
+    hideLeadForm() {
+        this.isLeadFormVisible = false;
+        document.getElementById('leadForm').style.display = 'none';
+    }
+
+    async submitLead() {
+        const name = document.getElementById('leadName').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const message = document.getElementById('leadMessage').value.trim();
+        
+        if (!name || !email) {
+            alert('Please fill in at least name and email');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`${this.apiUrl}/lead`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: this.userId,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    project_type: message || 'Website Project'
+                })
+            });
+            
+            const data = await response.json();
+            
+            // Hide lead form
+            this.hideLeadForm();
+            if (window.webbabaTrack) window.webbabaTrack('chatbot_lead_submitted', { has_phone: !!phone });
+            
+            // Add confirmation message
+            this.addMessage(`Thank you ${name}! We'll contact you soon at ${email}. 🎉`, 'bot');
+            
+            // Clear form
+            document.getElementById('leadName').value = '';
+            document.getElementById('leadEmail').value = '';
+            document.getElementById('leadPhone').value = '';
+            document.getElementById('leadMessage').value = '';
+            
+        } catch (error) {
+            console.error('Error submitting lead:', error);
+            alert('There was an error. Please try again.');
+        }
+    }
+
+    scrollToBottom() {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    saveConversation() {
+        // Save last 20 messages to localStorage
+        const recentMessages = this.conversation.slice(-20);
+        localStorage.setItem('webbaba_chatbot_conversation', JSON.stringify(recentMessages));
+    }
+
+    loadConversation() {
+        const saved = localStorage.getItem('webbaba_chatbot_conversation');
+        if (saved) {
+            try {
+                this.conversation = JSON.parse(saved);
+            } catch (e) {
+                this.conversation = [];
+            }
+        }
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+}
+
+// Initialize chatbot when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new WebBabaChatbot();
+    });
+} else {
+    new WebBabaChatbot();
+}
+</script>
 </body>
 </html>
