@@ -132,6 +132,14 @@
         flex-direction: row-reverse;
     }
 
+    .message-bubble-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+        max-width: 100%;
+    }
+
     .message-bubble {
         background: white;
         padding: 12px 16px;
@@ -351,7 +359,8 @@
         background: #f97415;
         border-radius: 2px;
     }
-    .chatbot-quick-replies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chatbot-quick-replies { display: flex; flex-wrap: wrap; gap: 8px; }
+    .message-bubble-wrap .chatbot-quick-replies { margin-top: 0; }
     .chatbot-quick-reply { background: #f0f0f0; border: 1px solid #ddd; border-radius: 18px; padding: 8px 14px; font-size: 13px; cursor: pointer; transition: all 0.2s; color: #333; }
     .chatbot-quick-reply:hover { background: #f97415; color: white; border-color: #f97415; }
 </style>
@@ -408,7 +417,7 @@ class WebBabaChatbot {
                 self.exitIntentShown = true;
                 self._openSource = 'exit_intent';
                 self.toggleChatbot();
-                self.addMessage("Leaving so soon? Chat for a free quick quote—we reply within 2 hours! 🚀", 'bot');
+                self.addMessage("Leaving so soon? Chat for a free quick quote! 🚀", 'bot');
             }
         }, { passive: true });
     }
@@ -434,8 +443,10 @@ class WebBabaChatbot {
                     <div class="message bot" id="welcomeMessage" role="article" aria-label="Web Baba says">
                         <div class="message-content">
                             <div class="avatar bot-avatar" aria-hidden="true">WB</div>
-                            <div class="message-bubble">👋 Need a custom website in 48 hours? Ask me about packages, pricing, or timelines—or get a quick quote!</div>
-                            <div class="chatbot-quick-replies" id="welcomeQuickReplies" role="group" aria-label="Quick reply options"></div>
+                            <div class="message-bubble-wrap">
+                                <div class="message-bubble">👋 Need a custom website in 48 hours? Ask me about packages, pricing, or timelines—or get a quick quote!</div>
+                                <div class="chatbot-quick-replies" id="welcomeQuickReplies" role="group" aria-label="Quick reply options"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

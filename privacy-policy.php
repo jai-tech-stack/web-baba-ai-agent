@@ -69,9 +69,9 @@
         "closes": "23:59"
       },
       "sameAs": [
-        "https://www.facebook.com/webbaba",
-        "https://twitter.com/webbaba",
-        "https://www.linkedin.com/company/webbaba"
+        "https://www.facebook.com/profile.php?id=61582170124254",
+        "https://www.linkedin.com/company/webbaba",
+        "https://www.instagram.com/webba_ba48/"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -1087,20 +1087,18 @@
                 </ul>
             </div>
              <div class="footer-links social">
-                <h4>Follow US</h4>
+                <h4>Follow Us</h4>
                 <ul style="display:flex;">
-                    <li><a href="#"> <svg fill="#F97415" width="18px" height="18px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-linkedin"><path d='M19.959 11.719v7.379h-4.278v-6.885c0-1.73-.619-2.91-2.167-2.91-1.182 0-1.886.796-2.195 1.565-.113.275-.142.658-.142 1.043v7.187h-4.28s.058-11.66 0-12.869h4.28v1.824l-.028.042h.028v-.042c.568-.875 1.583-2.126 3.856-2.126 2.815 0 4.926 1.84 4.926 5.792zM2.421.026C.958.026 0 .986 0 2.249c0 1.235.93 2.224 2.365 2.224h.028c1.493 0 2.42-.989 2.42-2.224C4.787.986 3.887.026 2.422.026zM.254 19.098h4.278V6.229H.254v12.869z' /></svg></a></li>
-                    <li><a href="#contact"><svg width="18px" height="18px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11 3.5H12M4.5 0.5H10.5C12.7091 0.5 14.5 2.29086 14.5 4.5V10.5C14.5 12.7091 12.7091 14.5 10.5 14.5H4.5C2.29086 14.5 0.5 12.7091 0.5 10.5V4.5C0.5 2.29086 2.29086 0.5 4.5 0.5ZM7.5 10.5C5.84315 10.5 4.5 9.15685 4.5 7.5C4.5 5.84315 5.84315 4.5 7.5 4.5C9.15685 4.5 10.5 5.84315 10.5 7.5C10.5 9.15685 9.15685 10.5 7.5 10.5Z" stroke="#F97415"/>
-</svg></a></li>
-
+                    <li><a href="https://www.facebook.com/profile.php?id=61582170124254" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg fill="#F97415" width="18px" height="18px" viewBox="-7 -2 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d='M2.046 3.865v2.748H.032v3.36h2.014v9.986H6.18V9.974h2.775s.26-1.611.386-3.373H6.197V4.303c0-.343.45-.805.896-.805h2.254V0H6.283c-4.34 0-4.237 3.363-4.237 3.865z' /></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/webbaba" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg fill="#F97415" width="18px" height="18px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d='M19.959 11.719v7.379h-4.278v-6.885c0-1.73-.619-2.91-2.167-2.91-1.182 0-1.886.796-2.195 1.565-.113.275-.142.658-.142 1.043v7.187h-4.28s.058-11.66 0-12.869h4.28v1.824l-.028.042h.028v-.042c.568-.875 1.583-2.126 3.856-2.126 2.815 0 4.926 1.84 4.926 5.792zM2.421.026C.958.026 0 .986 0 2.249c0 1.235.93 2.224 2.365 2.224h.028c1.493 0 2.42-.989 2.42-2.224C4.787.986 3.887.026 2.422.026zM.254 19.098h4.278V6.229H.254v12.869z' /></svg></a></li>
+                    <li><a href="https://www.instagram.com/webba_ba48/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18px" height="18px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11 3.5H12M4.5 0.5H10.5C12.7091 0.5 14.5 2.29086 14.5 4.5V10.5C14.5 12.7091 12.7091 14.5 10.5 14.5H4.5C2.29086 14.5 0.5 12.7091 0.5 10.5V4.5C0.5 2.29086 2.29086 0.5 4.5 0.5ZM7.5 10.5C5.84315 10.5 4.5 9.15685 4.5 7.5C4.5 5.84315 5.84315 4.5 7.5 4.5C9.15685 4.5 10.5 5.84315 10.5 7.5C10.5 9.15685 9.15685 10.5 7.5 10.5Z" stroke="#F97415"/></svg></a></li>
                 </ul>
             </div>
            
         </div>
         
         <div class="footer-bottom">
-            <p>© 2025 WebBaba. All rights reserved. Powered by <a href="https://origamicreative.com" target="_blank">Origami Creative</a></p>
+            <p>© 2025 WebBaba. All rights reserved. Powered by <a href="https://origamicreative.com" target="_blank" rel="noopener noreferrer">Origami Creative</a></p>
             <div class="footer-legal">
                 <a href="privacy-policy.php">Privacy Policy</a>
                 <a href="terms-conditions.php">Terms & Conditions</a>

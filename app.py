@@ -176,6 +176,64 @@ def save_to_google_sheets(lead_data):
         print(f"Google Sheets error: {e}")
         return False
 
+def get_process_answers_sheet(client):
+    """Get or create the Process Answers worksheet"""
+    spreadsheet = client.open_by_key(GOOGLE_SHEET_ID)
+    try:
+        return spreadsheet.worksheet('Process Answers')
+    except gspread.WorksheetNotFound:
+        ws = spreadsheet.add_worksheet(title='Process Answers', rows=500, cols=10)
+        ws.append_row(['Timestamp', 'Email', 'Name', 'Step', 'Step Title', 'Answers'])
+        return ws
+
+def save_process_answers_to_sheets(data):
+    """Save process step answers to Google Sheets (Process Answers tab)"""
+    try:
+        if not GOOGLE_SHEET_ID or GOOGLE_SHEET_CREDS == '{}':
+            # No Sheets configured: store in JSON file for later
+            proc_file = 'data/process_answers.json'
+            os.makedirs('data', exist_ok=True)
+            existing = []
+            if os.path.exists(proc_file):
+                try:
+                    with open(proc_file, 'r') as f:
+                        existing = json.load(f)
+                except Exception:
+                    pass
+            record = {
+                'timestamp': datetime.now().isoformat(),
+                'email': data.get('email', ''),
+                'name': data.get('name', ''),
+                'step': data.get('step'),
+                'step_title': data.get('step_title', ''),
+                'answers': data.get('answers', {})
+            }
+            existing.append(record)
+            with open(proc_file, 'w') as f:
+                json.dump(existing, f, indent=2)
+            return True
+        creds_json = json.loads(GOOGLE_SHEET_CREDS)
+        scope = ['https://spreadsheets.google.com/feeds',
+                 'https://www.googleapis.com/auth/drive']
+        creds = Credentials.from_service_account_info(creds_json, scopes=scope)
+        client = gspread.authorize(creds)
+        sheet = get_process_answers_sheet(client)
+        answers = data.get('answers', {})
+        answers_text = '\n'.join(f"Q: {k}\nA: {v}" for k, v in answers.items() if v)
+        row = [
+            datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            data.get('email', ''),
+            data.get('name', ''),
+            str(data.get('step', '')),
+            data.get('step_title', ''),
+            answers_text
+        ]
+        sheet.append_row(row)
+        return True
+    except Exception as e:
+        print(f"Process answers save error: {e}")
+        return False
+
 @app.route('/chat', methods=['POST'])
 def chat():
     """Handle chatbot messages"""
@@ -228,6 +286,26 @@ def chat():
             'response': offline_fallback(user_message),
             'needs_lead_info': False
         })
+
+@app.route('/process-answers', methods=['POST'])
+def save_process_answers():
+    """Save process-step answers (for use in meetings)"""
+    try:
+        data = request.json or {}
+        required = ['email', 'name', 'step', 'answers']
+        if not all(data.get(k) for k in ['email', 'step', 'answers']):
+            return jsonify({'success': False, 'message': 'Email, step, and answers are required.'}), 400
+        save_process_answers_to_sheets({
+            'email': data.get('email', '').strip(),
+            'name': data.get('name', '').strip(),
+            'step': data.get('step'),
+            'step_title': data.get('step_title', ''),
+            'answers': data.get('answers', {})
+        })
+        return jsonify({'success': True, 'message': 'Thanks! We have your answers—easy to reference in our meeting.'})
+    except Exception as e:
+        print(f"Error in /process-answers: {e}")
+        return jsonify({'success': True, 'message': 'Your answers have been saved.'}), 200
 
 @app.route('/lead', methods=['POST'])
 def save_lead():

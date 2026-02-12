@@ -69,9 +69,9 @@
         "closes": "23:59"
       },
       "sameAs": [
-        "https://www.facebook.com/webbaba",
-        "https://twitter.com/webbaba",
-        "https://www.linkedin.com/company/webbaba"
+        "https://www.facebook.com/profile.php?id=61582170124254",
+        "https://www.linkedin.com/company/webbaba",
+        "https://www.instagram.com/webba_ba48/"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -318,6 +318,24 @@
             flex-wrap: wrap;
         }
         
+        .hero-chat-cta {
+            margin-top: 20px;
+            font-size: 15px;
+            opacity: 0.95;
+        }
+        .hero-chat-link, .pricing-chat-link {
+            background: none;
+            border: none;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: inherit;
+            padding: 0;
+            font-weight: 600;
+        }
+        .hero-chat-link:hover, .pricing-chat-link:hover { opacity: 0.9; }
+        .pricing-chat-cta { margin-bottom: 30px; color: #666; }
+        .pricing-chat-link { color: var(--orange); }
         .hero-feature {
             display: flex;
             align-items: center;
@@ -497,6 +515,57 @@
             color: #666;
             font-size: 14px;
         }
+        
+        .process-step-cta {
+            margin-top: 16px;
+            font-size: 14px;
+            background: transparent;
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+        .process-step-cta:hover {
+            background: var(--orange);
+            color: white;
+        }
+        .process-questions-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .process-questions-modal.open { display: flex; }
+        .process-questions-modal .modal-inner {
+            background: white;
+            border-radius: 12px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .process-questions-modal h3 { margin-top: 0; margin-bottom: 20px; color: #1a1a2e; font-size: 22px; }
+        .process-questions-modal label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; font-size: 14px; }
+        .process-questions-modal input[type="text"],
+        .process-questions-modal input[type="email"],
+        .process-questions-modal textarea {
+            width: 100%; padding: 10px 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; box-sizing: border-box;
+        }
+        .process-questions-modal textarea { min-height: 80px; resize: vertical; }
+        .process-questions-modal .modal-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .process-questions-modal .btn-submit-process { background: var(--orange); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; }
+        .process-questions-modal .btn-submit-process:hover { opacity: 0.9; }
+        .process-questions-modal .btn-close-modal { background: #eee; color: #333; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 15px; }
+        .process-questions-modal .process-form-success { display: none; color: #0a0; font-weight: 600; margin-top: 12px; }
         
         .pricing {
             padding: 80px 20px;
@@ -919,28 +988,26 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="/" style="text-decoration:none;"><img src="/images/WebBaba-logo.png" style="height:60px;"/></a>
+            <a href="/" style="text-decoration:none;"><img src="/images/WebBaba-logo.png" style="height:60px;" alt="WebBaba"/></a>
         </div>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#process">Process</a></li>
             <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
         </ul>
-       <div class="location-switch-modern">
-  <input type="checkbox" id="location-toggle" />
-  <label for="location-toggle" class="switch-btn">
-    <span class="selected">UAE</span>
-    <span class="arrow">▼</span>
-  </label>
-  
-  <ul class="location-options">
-     <li><a href="https://web-baba.com/">IND</a></li>
-    <li><a href="#">UAE</a></li>
-   
-  </ul>
-</div>
-
+        <div class="location-switch-modern">
+            <input type="checkbox" id="location-toggle" />
+            <label for="location-toggle" class="switch-btn">
+                <span class="selected">UAE</span>
+                <span class="arrow">▼</span>
+            </label>
+            <ul class="location-options">
+                <li><a href="/">IND</a></li>
+                <li><a href="#">UAE</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section class="hero">
@@ -955,7 +1022,7 @@
             <div class="hero-feature"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 text-orange" data-lov-id="src/components/Hero.tsx:50:14" data-lov-name="Star" data-component-path="src/components/Hero.tsx" data-component-line="50" data-component-file="Hero.tsx" data-component-name="Star" data-component-content="%7B%22className%22%3A%22w-5%20h-5%20text-orange%22%7D"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> Cost Effective</div>
         </div>
         <a href="#contact" class="btn-primary">Start Your Project Now</a>
-    
+        <p class="hero-chat-cta">Need help choosing? <button type="button" class="hero-chat-link" id="heroChatCta">Chat with our AI assistant</button></p>
     </section>
 
     <section class="why-choose" id="services">
@@ -966,7 +1033,7 @@
             <div class="feature-card">
                 <div class="feature-icon"><img src="images/speed-icon.png" alt="Speed"></div>
                 <h3>Lightning Fast Delivery</h3>
-                <p>We execute with exceptional speed without compromising quality. Our streamlined process ensures your website launches fast and right-deadlines.</p>
+                <p>We execute with exceptional speed without compromising quality. Our streamlined process ensures your website launches fast and on time.</p>
                 <ul class="feature-list">
                     <li>48-hour guaranteed delivery</li>
                     <li>Responsive design</li>
@@ -1015,6 +1082,7 @@
                     0-4 Hours
                 </div>
                 <p>We start by understanding your business, your target audience, and your business goals, and create a detailed plan for your project.</p>
+                <button type="button" class="process-step-cta" data-step="1" data-step-title="Brief & Planning">Answer a few questions</button>
             </div>
             
             <div class="process-step">
@@ -1026,6 +1094,7 @@
                   4-32 Hours
                 </div>
                 <p>Our expert team gets to work creating your custom website using the latest technologies and best practices.</p>
+                <button type="button" class="process-step-cta" data-step="2" data-step-title="Design & Development">Answer a few questions</button>
             </div>
             
             <div class="process-step">
@@ -1035,7 +1104,8 @@
                   <div class="Timeline">
                  32-44 Hours
                 </div>
-                <p>We present the completed website to ensure your website meets our quality standards and your expectations.</p>
+                <p>We share the completed site for your review and refine until it meets your expectations.</p>
+                <button type="button" class="process-step-cta" data-step="3" data-step-title="Review & Refinement">Answer a few questions</button>
             </div>
             
             <div class="process-step">
@@ -1046,14 +1116,35 @@
                  44-48 Hours
                 </div>
                 <p>Your website goes live. We handle all the technical details, ensuring everything is ready to start generating leads for your business.</p>
+                <button type="button" class="process-step-cta" data-step="4" data-step-title="Launch & Delivery">Answer a few questions</button>
             </div>
         </div>
     </section>
 
+    <div id="processQuestionsModal" class="process-questions-modal" aria-hidden="true" role="dialog" aria-labelledby="processModalTitle">
+        <div class="modal-inner">
+            <h3 id="processModalTitle">Answer a few questions</h3>
+            <form id="processQuestionsForm">
+                <input type="hidden" id="processStepNum" name="step" value="">
+                <input type="hidden" id="processStepTitle" name="step_title" value="">
+                <label for="processName">Your name <span style="color:#c00">*</span></label>
+                <input type="text" id="processName" name="name" required placeholder="e.g. John">
+                <label for="processEmail">Email <span style="color:#c00">*</span></label>
+                <input type="email" id="processEmail" name="email" required placeholder="you@example.com">
+                <div id="processQuestionsContainer"></div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-submit-process">Save answers</button>
+                    <button type="button" class="btn-close-modal" id="processModalClose">Cancel</button>
+                </div>
+                <p class="process-form-success" id="processFormSuccess"></p>
+            </form>
+        </div>
+    </div>
+
     <section class="pricing" id="pricing">
         <h2>Transparent Pricing</h2>
         <p>Choose the package that fits your business needs. All packages include our 48-hour delivery guarantee.</p>
-        
+        <p class="pricing-chat-cta">Need help choosing a package? <button type="button" class="pricing-chat-link" id="pricingChatCta">Chat with our AI assistant</button></p>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <h3>Starter</h3>
@@ -1212,8 +1303,8 @@
                 <div class="contact-item">
                     <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-6 h-6 text-orange" data-lov-id="src/components/Contact.tsx:196:22" data-lov-name="Clock" data-component-path="src/components/Contact.tsx" data-component-line="196" data-component-file="Contact.tsx" data-component-name="Clock" data-component-content="%7B%22className%22%3A%22w-6%20h-6%20text-orange%22%7D"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
                     <div class="contact-details">
-                        <h4>Working Hours</h4>
-                        <p>Available 24/7<br>Within 8 hours</p>
+                        <h4>Response Time</h4>
+                        <p>We reply within 2 hours<br>Mon–Sat</p>
                     </div>
                 </div>
                 
@@ -1232,7 +1323,7 @@
                 <p>WebBaba is a web development company specializing in delivering high-quality, responsive websites with rapid-fire turnaround. Our team of expert developers, designers, and strategists work collaboratively to bring your vision to life, ensuring that each website is not just beautiful but functional.</p>
                 <div class="footer-contact">
                     <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="position: relative;top: 4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg> <a style="color:white; text-decoration:none;" href="mailto:vrishank.m@origamicreative.ae">vrishank.m@origamicreative.ae</a></p>
-                    <p><svg style="position: relative; top: 4px;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:971 509864674"></a>+971 509864674</a></p>
+                    <p><svg style="position: relative; top: 4px;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:+971509864674">+971 509864674</a></p>
                 </div>
             </div>
             
@@ -1255,21 +1346,18 @@
                 </ul>
             </div>
              <div class="footer-links social">
-                <h4>Follow US</h4>
+                <h4>Follow Us</h4>
                 <ul style="display:flex;">
-                   <li><a href="https://www.facebook.com/profile.php?id=61582170124254" target="_blank"><svg fill="#F97415" width="18px" height="18px" viewBox="-7 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-facebook"><path d='M2.046 3.865v2.748H.032v3.36h2.014v9.986H6.18V9.974h2.775s.26-1.611.386-3.373H6.197V4.303c0-.343.45-.805.896-.805h2.254V0H6.283c-4.34 0-4.237 3.363-4.237 3.865z' /></svg></a></li>
-                    <li><a href="#" target="_blank"> <svg fill="#F97415" width="18px" height="18px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-linkedin"><path d='M19.959 11.719v7.379h-4.278v-6.885c0-1.73-.619-2.91-2.167-2.91-1.182 0-1.886.796-2.195 1.565-.113.275-.142.658-.142 1.043v7.187h-4.28s.058-11.66 0-12.869h4.28v1.824l-.028.042h.028v-.042c.568-.875 1.583-2.126 3.856-2.126 2.815 0 4.926 1.84 4.926 5.792zM2.421.026C.958.026 0 .986 0 2.249c0 1.235.93 2.224 2.365 2.224h.028c1.493 0 2.42-.989 2.42-2.224C4.787.986 3.887.026 2.422.026zM.254 19.098h4.278V6.229H.254v12.869z' /></svg></a></li>
-                    <li><a href="#contact" target="_blank"><svg width="18px" height="18px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11 3.5H12M4.5 0.5H10.5C12.7091 0.5 14.5 2.29086 14.5 4.5V10.5C14.5 12.7091 12.7091 14.5 10.5 14.5H4.5C2.29086 14.5 0.5 12.7091 0.5 10.5V4.5C0.5 2.29086 2.29086 0.5 4.5 0.5ZM7.5 10.5C5.84315 10.5 4.5 9.15685 4.5 7.5C4.5 5.84315 5.84315 4.5 7.5 4.5C9.15685 4.5 10.5 5.84315 10.5 7.5C10.5 9.15685 9.15685 10.5 7.5 10.5Z" stroke="#F97415"/>
-</svg></a></li>
-
+                    <li><a href="https://www.facebook.com/profile.php?id=61582170124254" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg fill="#F97415" width="18px" height="18px" viewBox="-7 -2 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d='M2.046 3.865v2.748H.032v3.36h2.014v9.986H6.18V9.974h2.775s.26-1.611.386-3.373H6.197V4.303c0-.343.45-.805.896-.805h2.254V0H6.283c-4.34 0-4.237 3.363-4.237 3.865z' /></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/webbaba" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg fill="#F97415" width="18px" height="18px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d='M19.959 11.719v7.379h-4.278v-6.885c0-1.73-.619-2.91-2.167-2.91-1.182 0-1.886.796-2.195 1.565-.113.275-.142.658-.142 1.043v7.187h-4.28s.058-11.66 0-12.869h4.28v1.824l-.028.042h.028v-.042c.568-.875 1.583-2.126 3.856-2.126 2.815 0 4.926 1.84 4.926 5.792zM2.421.026C.958.026 0 .986 0 2.249c0 1.235.93 2.224 2.365 2.224h.028c1.493 0 2.42-.989 2.42-2.224C4.787.986 3.887.026 2.422.026zM.254 19.098h4.278V6.229H.254v12.869z' /></svg></a></li>
+                    <li><a href="https://www.instagram.com/webba_ba48/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18px" height="18px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11 3.5H12M4.5 0.5H10.5C12.7091 0.5 14.5 2.29086 14.5 4.5V10.5C14.5 12.7091 12.7091 14.5 10.5 14.5H4.5C2.29086 14.5 0.5 12.7091 0.5 10.5V4.5C0.5 2.29086 2.29086 0.5 4.5 0.5ZM7.5 10.5C5.84315 10.5 4.5 9.15685 4.5 7.5C4.5 5.84315 5.84315 4.5 7.5 4.5C9.15685 4.5 10.5 5.84315 10.5 7.5C10.5 9.15685 9.15685 10.5 7.5 10.5Z" stroke="#F97415"/></svg></a></li>
                 </ul>
             </div>
            
         </div>
         
         <div class="footer-bottom">
-            <p>© 2025 WebBaba. All rights reserved. Powered by <a href="https://origamicreative.com" target="_blank">Origami Creative</a></p>
+            <p>© 2025 WebBaba. All rights reserved. Powered by <a href="https://origamicreative.com" target="_blank" rel="noopener noreferrer">Origami Creative</a></p>
             <div class="footer-legal">
                 <a href="privacy-policy.php">Privacy Policy</a>
                 <a href="terms-conditions.php">Terms & Conditions</a>
@@ -1402,7 +1490,105 @@
             });
         });
         
-        
+        // Process step questions: save answers to backend for easy reference in meetings
+        var PROCESS_STEP_QUESTIONS = {
+            1: [
+                { key: 'Business/company name', type: 'text', placeholder: 'e.g. Acme Pvt Ltd' },
+                { key: 'What does your business do?', type: 'textarea', placeholder: 'Brief description' },
+                { key: 'Who is your target audience?', type: 'text', placeholder: 'e.g. small business owners' },
+                { key: 'Main goals for the website?', type: 'textarea', placeholder: 'e.g. generate leads, sell online' },
+                { key: 'Existing brand colors or logo?', type: 'text', placeholder: 'Yes/No and details' },
+                { key: 'Any competitor sites you like?', type: 'text', placeholder: 'Optional URLs or names' }
+            ],
+            2: [
+                { key: 'Which pages do you need?', type: 'text', placeholder: 'e.g. Home, About, Services, Contact' },
+                { key: 'Blog or news section?', type: 'text', placeholder: 'Yes / No / Maybe' },
+                { key: 'Specific features?', type: 'textarea', placeholder: 'e.g. contact form, booking' },
+                { key: 'Content (text/images) ready?', type: 'text', placeholder: 'Yes / No / Partially' }
+            ],
+            3: [
+                { key: 'Who will review the site?', type: 'text', placeholder: 'Name and role' },
+                { key: 'Preferred way to share feedback?', type: 'text', placeholder: 'e.g. email, call' },
+                { key: 'Must-have changes from past experiences?', type: 'textarea', placeholder: 'Optional' }
+            ],
+            4: [
+                { key: 'Domain name (if already purchased)?', type: 'text', placeholder: 'e.g. mycompany.com' },
+                { key: 'Hosting: we provide or you have existing?', type: 'text', placeholder: 'We provide / I have' },
+                { key: 'Post-launch support needed?', type: 'text', placeholder: 'Optional' }
+            ]
+        };
+        var processApiBase = (typeof WEBBABA_CHATBOT_API !== 'undefined') ? WEBBABA_CHATBOT_API : 'https://web-production-b2647.up.railway.app';
+        document.querySelectorAll('.process-step-cta').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var step = parseInt(this.getAttribute('data-step'), 10);
+                var stepTitle = this.getAttribute('data-step-title') || ('Step ' + step);
+                var modal = document.getElementById('processQuestionsModal');
+                var titleEl = document.getElementById('processModalTitle');
+                var container = document.getElementById('processQuestionsContainer');
+                document.getElementById('processStepNum').value = step;
+                document.getElementById('processStepTitle').value = stepTitle;
+                titleEl.textContent = stepTitle + ' – a few questions';
+                container.innerHTML = '';
+                (PROCESS_STEP_QUESTIONS[step] || []).forEach(function(q) {
+                    var label = document.createElement('label');
+                    label.textContent = q.key;
+                    label.setAttribute('for', 'pq_' + q.key.replace(/\s+/g, '_'));
+                    container.appendChild(label);
+                    var el = document.createElement(q.type === 'textarea' ? 'textarea' : 'input');
+                    el.id = 'pq_' + q.key.replace(/\s+/g, '_');
+                    el.name = 'q_' + q.key;
+                    el.type = q.type === 'textarea' ? null : 'text';
+                    if (q.placeholder) el.placeholder = q.placeholder;
+                    if (q.type === 'textarea') el.rows = 3;
+                    container.appendChild(el);
+                });
+                document.getElementById('processFormSuccess').style.display = 'none';
+                document.getElementById('processFormSuccess').textContent = '';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            });
+        });
+        document.getElementById('processModalClose').addEventListener('click', function() {
+            document.getElementById('processQuestionsModal').classList.remove('open');
+            document.getElementById('processQuestionsModal').setAttribute('aria-hidden', 'true');
+        });
+        document.getElementById('processQuestionsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('open');
+                this.setAttribute('aria-hidden', 'true');
+            }
+        });
+        document.getElementById('processQuestionsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var step = document.getElementById('processStepNum').value;
+            var stepTitle = document.getElementById('processStepTitle').value;
+            var name = document.getElementById('processName').value.trim();
+            var email = document.getElementById('processEmail').value.trim();
+            var answers = {};
+            document.getElementById('processQuestionsContainer').querySelectorAll('input, textarea').forEach(function(input) {
+                var qText = (input.name || '').replace(/^q_/, '');
+                if (qText) answers[qText] = input.value.trim();
+            });
+            var payload = { email: email, name: name, step: parseInt(step, 10), step_title: stepTitle, answers: answers };
+            try {
+                var res = await fetch(processApiBase + '/process-answers', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                var data = res.ok ? await res.json().catch(function() { return {}; }) : {};
+                var msg = (data && data.message) ? data.message : 'Thanks! We have your answers—easy to reference in our meeting.';
+                document.getElementById('processFormSuccess').textContent = msg;
+                document.getElementById('processFormSuccess').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('processQuestionsModal').classList.remove('open');
+                    document.getElementById('processQuestionsModal').setAttribute('aria-hidden', 'true');
+                }, 2000);
+            } catch (err) {
+                document.getElementById('processFormSuccess').textContent = "Saved. We'll use this in our meeting.";
+                document.getElementById('processFormSuccess').style.display = 'block';
+            }
+        });
     </script>
  
 
