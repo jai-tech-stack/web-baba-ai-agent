@@ -82,6 +82,130 @@ def offline_fallback(message):
     else:
         return "I'm here to help with website design, development, quotes, and project planning. Could you tell me more about what you're looking for?"
 
+# Process-step questions (same as frontend) for "answer via chat" flow
+PROCESS_STEP_QUESTIONS = {
+    1: [
+        'Business/company name',
+        'What does your business do?',
+        'Who is your target audience?',
+        'Main goals for the website?',
+        'Existing brand colors or logo?',
+        'Any competitor sites you like?',
+    ],
+    2: [
+        'Which pages do you need?',
+        'Blog or news section?',
+        'Specific features?',
+        'Content (text/images) ready?',
+    ],
+    3: [
+        'Who will review the site?',
+        'Preferred way to share feedback?',
+        'Must-have changes from past experiences?',
+    ],
+    4: [
+        'Domain name (if already purchased)?',
+        'Hosting: we provide or you have existing?',
+        'Post-launch support needed?',
+    ],
+}
+PROCESS_STEP_TITLES = {
+    1: 'Brief & Planning',
+    2: 'Design & Development',
+    3: 'Review & Refinement',
+    4: 'Launch & Delivery',
+}
+
+def handle_process_step_chat(user_message, user_id):
+    """
+    Handle process-step Q&A mode. Returns (response_text, updated_memory_dict) or (None, None) if not in process mode.
+    """
+    memory = load_memory()
+    user_memory = memory.get(user_id, {})
+    step = user_memory.get('process_step')
+    msg = (user_message or '').strip()
+
+    # Start process step: [START_PROCESS_STEP_1] ... [START_PROCESS_STEP_4]
+    if msg.startswith('[START_PROCESS_STEP_') and msg.endswith(']'):
+        try:
+            step_num = int(msg.replace('[START_PROCESS_STEP_', '').replace(']', ''))
+        except ValueError:
+            return None, None
+        if step_num not in PROCESS_STEP_QUESTIONS:
+            return None, None
+        title = PROCESS_STEP_TITLES.get(step_num, f'Step {step_num}')
+        update_user_memory(user_id, {
+            'process_step': step_num,
+            'process_step_title': title,
+            'process_answers': {},
+            'process_question_index': 0,
+            'process_need_name': True,
+            'process_need_email': False,
+        })
+        return f"I'll collect your {title} answers here. First, what's your name?", {}
+
+    if step is None:
+        return None, None
+
+    title = user_memory.get('process_step_title', f'Step {step}')
+    need_name = user_memory.get('process_need_name')
+    need_email = user_memory.get('process_need_email')
+    answers = user_memory.get('process_answers') or {}
+    idx = user_memory.get('process_question_index', 0)
+    questions = PROCESS_STEP_QUESTIONS.get(step, [])
+
+    # Collect name
+    if need_name:
+        name = msg or '—'
+        update_user_memory(user_id, {
+            'process_need_name': False,
+            'process_need_email': True,
+            'name': name,
+        })
+        return "Thanks! What's your email address?", {}
+
+    # Collect email
+    if need_email:
+        email = msg or '—'
+        update_user_memory(user_id, {
+            'email': email,
+            'process_need_email': False,
+        })
+        first_q = questions[0] if questions else "First question coming."
+        return f"Got it. {first_q}", {}
+
+    # Collect question answers
+    if idx < len(questions):
+        q = questions[idx]
+        answers[q] = msg or '—'
+        next_idx = idx + 1
+        update_user_memory(user_id, {
+            'process_answers': answers,
+            'process_question_index': next_idx,
+        })
+        if next_idx < len(questions):
+            return questions[next_idx], {}
+        # All done — save and clear
+        user_memory = get_user_memory(user_id)
+        save_process_answers_to_sheets({
+            'email': user_memory.get('email', ''),
+            'name': user_memory.get('name', ''),
+            'step': step,
+            'step_title': title,
+            'answers': answers,
+        })
+        update_user_memory(user_id, {
+            'process_step': None,
+            'process_step_title': None,
+            'process_answers': None,
+            'process_question_index': None,
+            'process_need_name': None,
+            'process_need_email': None,
+        })
+        return "Thanks! Your answers are saved—we'll use them in our meeting.", {}
+
+    return None, None
+
 def detect_lead_intent(message):
     """Detect if user wants to work with Web Baba or is asking about pricing/quote"""
     intent_keywords = [
@@ -241,6 +365,22 @@ def chat():
         data = request.json
         user_message = data.get('message', '')
         user_id = data.get('user_id', 'anonymous')
+        
+        # Process-step Q&A mode (answer via chat)
+        process_response = handle_process_step_chat(user_message, user_id)
+        if process_response is not None:
+            response_text = process_response[0] if isinstance(process_response, tuple) else process_response
+            memory = load_memory()
+            conversation_history = memory.get(user_id, {}).get('conversation', [])
+            conversation_history.append({'role': 'user', 'content': user_message})
+            conversation_history.append({'role': 'assistant', 'content': response_text})
+            conversation_history = conversation_history[-10:]
+            update_user_memory(user_id, {'conversation': conversation_history})
+            return jsonify({
+                'response': response_text,
+                'needs_lead_info': False,
+                'user_name': get_user_memory(user_id).get('name')
+            })
         
         # Load conversation history
         memory = load_memory()

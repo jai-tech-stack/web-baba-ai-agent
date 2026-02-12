@@ -30,6 +30,15 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://webbaba.com/">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJPJP15520"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QJPJP15520');
+    </script>
+    
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
@@ -532,6 +541,9 @@
             background: var(--orange);
             color: white;
         }
+        .process-chat-option { margin-top: 8px; font-size: 13px; }
+        .process-chat-option a { color: var(--orange); text-decoration: none; }
+        .process-chat-option a:hover { text-decoration: underline; }
         .process-questions-modal {
             display: none;
             position: fixed;
@@ -1083,6 +1095,7 @@
                 </div>
                 <p>We start by understanding your business, your target audience, and your business goals, and create a detailed plan for your project.</p>
                 <button type="button" class="process-step-cta" data-step="1" data-step-title="Brief & Planning">Answer a few questions</button>
+                <p class="process-chat-option"><a href="index.php?process_step=1" class="process-chat-link" data-step="1">Or answer via chat</a></p>
             </div>
             
             <div class="process-step">
@@ -1095,6 +1108,7 @@
                 </div>
                 <p>Our expert team gets to work creating your custom website using the latest technologies and best practices.</p>
                 <button type="button" class="process-step-cta" data-step="2" data-step-title="Design & Development">Answer a few questions</button>
+                <p class="process-chat-option"><a href="index.php?process_step=2" class="process-chat-link" data-step="2">Or answer via chat</a></p>
             </div>
             
             <div class="process-step">
@@ -1106,6 +1120,7 @@
                 </div>
                 <p>We share the completed site for your review and refine until it meets your expectations.</p>
                 <button type="button" class="process-step-cta" data-step="3" data-step-title="Review & Refinement">Answer a few questions</button>
+                <p class="process-chat-option"><a href="index.php?process_step=3" class="process-chat-link" data-step="3">Or answer via chat</a></p>
             </div>
             
             <div class="process-step">
@@ -1117,6 +1132,7 @@
                 </div>
                 <p>Your website goes live. We handle all the technical details, ensuring everything is ready to start generating leads for your business.</p>
                 <button type="button" class="process-step-cta" data-step="4" data-step-title="Launch & Delivery">Answer a few questions</button>
+                <p class="process-chat-option"><a href="index.php?process_step=4" class="process-chat-link" data-step="4">Or answer via chat</a></p>
             </div>
         </div>
     </section>
