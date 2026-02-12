@@ -223,10 +223,11 @@ def chat():
         
     except Exception as e:
         print(f"Error in /chat: {e}")
+        # Return 200 with offline fallback so the user still sees a reply
         return jsonify({
             'response': offline_fallback(user_message),
             'needs_lead_info': False
-        }), 500
+        })
 
 @app.route('/lead', methods=['POST'])
 def save_lead():

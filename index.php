@@ -1437,48 +1437,52 @@
             });
         });
     </script>
-    <!-- Web Baba AI Chatbot -->
+    <!-- Web Baba AI Chatbot - Modern UI + Voiceover -->
 <style>
-    /* Web Baba Chatbot Styles */
     #webbaba-chatbot {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 24px;
+        right: 24px;
         z-index: 10000;
-        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     .chatbot-toggle {
-        width: 60px;
-        height: 60px;
-        background: #111;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-        position: relative;
+        box-shadow: 0 4px 20px rgba(249, 116, 21, 0.35), 0 2px 8px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 2px solid rgba(249, 116, 21, 0.3);
     }
 
     .chatbot-toggle:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        transform: scale(1.08);
+        box-shadow: 0 6px 24px rgba(249, 116, 21, 0.45), 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .chatbot-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(249, 116, 21, 0.5);
     }
 
     .chatbot-toggle svg {
         color: #f97415;
-        width: 24px;
-        height: 24px;
-        transition: all 0.3s ease;
+        width: 26px;
+        height: 26px;
     }
 
     .chatbot-toggle .close-icon {
         display: none;
         color: #fff;
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 1;
     }
 
     .chatbot-toggle.open svg {
@@ -1491,22 +1495,31 @@
 
     .chatbot-window {
         position: absolute;
-        bottom: 80px;
+        bottom: 72px;
         right: 0;
-        width: 350px;
-        height: 500px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        width: 380px;
+        max-width: calc(100vw - 48px);
+        height: 520px;
+        max-height: 85vh;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 12px 24px rgba(249, 116, 21, 0.08);
         display: none;
         flex-direction: column;
         overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.06);
+        animation: chatbotSlideUp 0.25s ease;
+    }
+
+    @keyframes chatbotSlideUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .chatbot-header {
-        background: #111;
-        color: white;
-        padding: 15px 20px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+        color: #fff;
+        padding: 16px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1515,41 +1528,61 @@
     .chatbot-title {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 15px;
+        letter-spacing: 0.02em;
     }
 
     .chatbot-title svg {
         color: #f97415;
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
     }
 
     .chatbot-minimize {
-        background: none;
+        background: rgba(255,255,255,0.1);
         border: none;
-        color: white;
+        color: #fff;
         font-size: 20px;
         cursor: pointer;
-        padding: 0;
-        width: 24px;
-        height: 24px;
+        padding: 4px;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: background 0.2s;
+    }
+
+    .chatbot-minimize:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    .chatbot-minimize:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #f97415;
     }
 
     .chatbot-messages {
         flex: 1;
         padding: 20px;
         overflow-y: auto;
-        background: #f8f9fa;
+        background: linear-gradient(180deg, #f8f9fc 0%, #f0f2f7 100%);
+        -webkit-overflow-scrolling: touch;
     }
 
     .message {
-        margin-bottom: 15px;
+        margin-bottom: 16px;
         display: flex;
+        animation: messageIn 0.2s ease;
+    }
+
+    @keyframes messageIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .message.user {
@@ -1559,8 +1592,8 @@
     .message-content {
         display: flex;
         align-items: flex-end;
-        gap: 8px;
-        max-width: 80%;
+        gap: 10px;
+        max-width: 85%;
     }
 
     .message.user .message-content {
@@ -1568,49 +1601,57 @@
     }
 
     .message-bubble {
-        background: white;
-        padding: 12px 16px;
-        border-radius: 18px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: #fff;
+        padding: 14px 18px;
+        border-radius: 20px 20px 20px 6px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.5;
+        color: #1a1a2e;
+        border: 1px solid rgba(0,0,0,0.04);
     }
 
     .message.user .message-bubble {
-        background: #f97415;
-        color: white;
+        background: linear-gradient(135deg, #f97415 0%, #e0650f 100%);
+        color: #fff;
+        border-radius: 20px 20px 6px 20px;
+        border: none;
+        box-shadow: 0 4px 14px rgba(249, 116, 21, 0.35);
     }
 
     .avatar {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
+        font-size: 11px;
+        font-weight: 700;
         flex-shrink: 0;
+        letter-spacing: 0.02em;
     }
 
     .bot-avatar {
-        background: #111;
-        color: white;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     .user-avatar {
-        background: #f97415;
-        color: white;
+        background: linear-gradient(135deg, #f97415 0%, #e0650f 100%);
+        color: #fff;
     }
 
     .typing-indicator .message-bubble {
-        background: white;
-        padding: 12px 16px;
+        background: #fff;
+        padding: 14px 18px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .typing-dots {
         display: flex;
-        gap: 4px;
+        gap: 5px;
     }
 
     .typing-dots span {
@@ -1621,23 +1662,12 @@
         animation: typing 1.4s infinite ease-in-out;
     }
 
-    .typing-dots span:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-
-    .typing-dots span:nth-child(3) {
-        animation-delay: 0.4s;
-    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes typing {
-        0%, 60%, 100% {
-            transform: translateY(0);
-            opacity: 0.5;
-        }
-        30% {
-            transform: translateY(-10px);
-            opacity: 1;
-        }
+        0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+        30% { transform: translateY(-6px); opacity: 1; }
     }
 
     .chatbot-lead-form {
@@ -1717,31 +1747,33 @@
     }
 
     .chatbot-input-area {
-        padding: 15px 20px;
-        background: white;
-        border-top: 1px solid #eee;
+        padding: 16px 20px;
+        background: #fff;
+        border-top: 1px solid rgba(0,0,0,0.06);
         display: flex;
-        gap: 10px;
+        gap: 12px;
         align-items: center;
     }
 
     #chatInput {
         flex: 1;
-        padding: 12px 16px;
-        border: 1px solid #ddd;
-        border-radius: 25px;
+        padding: 12px 18px;
+        border: 2px solid #e8eaed;
+        border-radius: 24px;
         font-size: 14px;
         outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     #chatInput:focus {
         border-color: #f97415;
+        box-shadow: 0 0 0 3px rgba(249, 116, 21, 0.15);
     }
 
     #sendBtn {
-        width: 40px;
-        height: 40px;
-        background: #f97415;
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #f97415 0%, #e0650f 100%);
         border: none;
         border-radius: 50%;
         color: white;
@@ -1749,64 +1781,84 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(249, 116, 21, 0.35);
     }
 
     #sendBtn:hover {
-        background: #e0650f;
-        transform: scale(1.05);
+        transform: scale(1.06);
+        box-shadow: 0 6px 16px rgba(249, 116, 21, 0.45);
+    }
+
+    #sendBtn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(249, 116, 21, 0.5);
     }
 
     #sendBtn svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
     }
 
-    /* Mobile responsiveness */
     @media (max-width: 480px) {
         .chatbot-window {
-            width: calc(100vw - 40px);
+            width: calc(100vw - 32px);
             height: calc(100vh - 100px);
-            bottom: 80px;
-            right: 20px;
-            left: 20px;
+            bottom: 72px;
+            right: 16px;
+            left: 16px;
+            border-radius: 20px;
         }
     }
 
-    /* Scrollbar styling */
     .chatbot-messages::-webkit-scrollbar {
-        width: 4px;
+        width: 6px;
     }
 
     .chatbot-messages::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: transparent;
     }
 
     .chatbot-messages::-webkit-scrollbar-thumb {
-        background: #f97415;
-        border-radius: 2px;
+        background: rgba(249, 116, 21, 0.35);
+        border-radius: 3px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb:hover {
+        background: rgba(249, 116, 21, 0.5);
     }
 
     .chatbot-quick-replies {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 12px;
+        gap: 10px;
+        margin-top: 14px;
     }
+
     .chatbot-quick-reply {
-        background: #f0f0f0;
-        border: 1px solid #ddd;
-        border-radius: 18px;
-        padding: 8px 14px;
+        background: #fff;
+        border: 2px solid #e8eaed;
+        border-radius: 20px;
+        padding: 10px 16px;
         font-size: 13px;
+        font-weight: 500;
         cursor: pointer;
-        transition: all 0.2s;
-        color: #333;
+        transition: all 0.2s ease;
+        color: #1a1a2e;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
+
     .chatbot-quick-reply:hover {
-        background: #f97415;
-        color: white;
-        border-color: #f97415;
+        background: linear-gradient(135deg, #f97415 0%, #e0650f 100%);
+        color: #fff;
+        border-color: transparent;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(249, 116, 21, 0.3);
+    }
+
+    .chatbot-quick-reply:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(249, 116, 21, 0.4);
     }
 </style>
 
@@ -1824,7 +1876,7 @@ window.webbabaTrack = function(eventName, params) {
  * Proactive greeting, quick replies, exit intent, analytics
  */
 
-var WEBBABA_CHATBOT_API = 'https://web-production-98b93.up.railway.app';
+var WEBBABA_CHATBOT_API = 'https://web-production-b2647.up.railway.app';
 
 class WebBabaChatbot {
     constructor(config = {}) {
@@ -1869,7 +1921,7 @@ class WebBabaChatbot {
         const container = document.getElementById('welcomeQuickReplies');
         if (!container) return;
         container.innerHTML = this.quickReplies.map(text =>
-            '<button type="button" class="chatbot-quick-reply" data-msg="' + this.escapeHtml(text) + '">' + this.escapeHtml(text) + '</button>'
+            '<button type="button" class="chatbot-quick-reply" data-msg="' + this.escapeHtml(text) + '" aria-label="Ask: ' + this.escapeHtml(text) + '">' + this.escapeHtml(text) + '</button>'
         ).join('');
     }
 
@@ -1904,58 +1956,53 @@ class WebBabaChatbot {
         const widget = document.createElement('div');
         widget.id = 'webbaba-chatbot';
         widget.innerHTML = `
-            <div class="chatbot-toggle" id="chatbotToggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button type="button" class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat with Web Baba Assistant" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <span class="close-icon">×</span>
-            </div>
+                <span class="close-icon" aria-hidden="true">×</span>
+            </button>
             
-            <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-window" id="chatbotWindow" role="dialog" aria-modal="true" aria-label="Web Baba chat" aria-hidden="true">
                 <div class="chatbot-header">
                     <div class="chatbot-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                         Web Baba Assistant
                     </div>
-                    <button class="chatbot-minimize" id="chatbotMinimize">×</button>
+                    <button type="button" class="chatbot-minimize" id="chatbotMinimize" aria-label="Close chat">×</button>
                 </div>
                 
-                <div class="chatbot-messages" id="chatbotMessages">
-                    <div class="message bot" id="welcomeMessage">
+                <div class="chatbot-messages" id="chatbotMessages" role="log" aria-live="polite" aria-label="Chat messages" tabindex="-1">
+                    <div class="message bot" id="welcomeMessage" role="article" aria-label="Web Baba says">
                         <div class="message-content">
-                            <div class="avatar bot-avatar">WB</div>
+                            <div class="avatar bot-avatar" aria-hidden="true">WB</div>
                             <div class="message-bubble">
                                 👋 Need a custom website in 48 hours? Ask me about packages, pricing, or timelines—or get a quick quote!
                             </div>
-                            <div class="chatbot-quick-replies" id="welcomeQuickReplies"></div>
+                            <div class="chatbot-quick-replies" id="welcomeQuickReplies" role="group" aria-label="Quick reply options"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="chatbot-lead-form" id="leadForm">
+                <div class="chatbot-lead-form" id="leadForm" aria-hidden="true">
                     <div class="lead-form-content">
                         <h3>Let's get started!</h3>
                         <p>Tell us a bit about yourself:</p>
-                        <input type="text" id="leadName" placeholder="Your Name" required>
-                        <input type="email" id="leadEmail" placeholder="Your Email" required>
-                        <input type="tel" id="leadPhone" placeholder="Phone (optional)">
-                        <textarea id="leadMessage" placeholder="Project details (optional)"></textarea>
+                        <input type="text" id="leadName" placeholder="Your Name" required aria-label="Your name">
+                        <input type="email" id="leadEmail" placeholder="Your Email" required aria-label="Your email">
+                        <input type="tel" id="leadPhone" placeholder="Phone (optional)" aria-label="Phone number optional">
+                        <textarea id="leadMessage" placeholder="Project details (optional)" aria-label="Project details optional"></textarea>
                         <div class="lead-form-actions">
-                            <button id="skipLeadBtn">Skip</button>
-                            <button id="submitLeadBtn">Send</button>
+                            <button type="button" id="skipLeadBtn">Skip</button>
+                            <button type="button" id="submitLeadBtn">Send</button>
                         </div>
                     </div>
                 </div>
                 
                 <div class="chatbot-input-area">
-                    <input type="text" id="chatInput" placeholder="Type your message...">
-                    <button id="sendBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
+                    <input type="text" id="chatInput" placeholder="Type your message..." aria-label="Type your message" autocomplete="off">
+                    <button type="button" id="sendBtn" aria-label="Send message">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     </button>
                 </div>
             </div>
@@ -2005,20 +2052,25 @@ class WebBabaChatbot {
     }
 
     toggleChatbot() {
-        const window = document.getElementById('chatbotWindow');
+        const win = document.getElementById('chatbotWindow');
         const toggle = document.getElementById('chatbotToggle');
-        
         this.isOpen = !this.isOpen;
-        
+
         if (this.isOpen) {
-            window.style.display = 'flex';
+            win.style.display = 'flex';
+            win.setAttribute('aria-hidden', 'false');
             toggle.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.setAttribute('aria-label', 'Close chat');
             var source = this._openSource || 'widget';
             this._openSource = null;
             if (window.webbabaTrack) window.webbabaTrack('chatbot_open', { source: source });
         } else {
-            window.style.display = 'none';
+            win.style.display = 'none';
+            win.setAttribute('aria-hidden', 'true');
             toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open chat with Web Baba Assistant');
         }
     }
 
@@ -2037,7 +2089,6 @@ class WebBabaChatbot {
         this.showTypingIndicator();
         
         try {
-            // Send to backend
             const response = await fetch(`${this.apiUrl}/chat`, {
                 method: 'POST',
                 headers: {
@@ -2049,40 +2100,52 @@ class WebBabaChatbot {
                 })
             });
             
-            const data = await response.json();
+            let data;
+            try {
+                data = await response.json();
+            } catch (parseErr) {
+                console.error('Chat API returned non-JSON. Status:', response.status, 'URL:', this.apiUrl + '/chat');
+                this.hideTypingIndicator();
+                this.addMessage("The chat service returned an invalid response. Please try again in a moment.", 'bot');
+                return;
+            }
             
-            // Hide typing indicator
             this.hideTypingIndicator();
             
-            // Add bot response
-            this.addMessage(data.response, 'bot');
+            if (!response.ok) {
+                console.error('Chat API error:', response.status, data);
+                this.addMessage(data && data.error ? data.error : "Service temporarily unavailable. Please try again in a moment.", 'bot');
+                return;
+            }
             
-            // Check if we need lead info
+            const reply = data.response || "I'm here to help! Ask about our packages, pricing, or 48-hour delivery.";
+            this.addMessage(reply, 'bot');
+            
             if (data.needs_lead_info && !this.isLeadFormVisible) {
                 this.showLeadForm();
             }
-            
-            // Update userName if available
             if (data.user_name && !this.userName) {
                 this.userName = data.user_name;
             }
             
         } catch (error) {
-            console.error('Error sending message:', error);
+            console.error('Chat fetch failed:', error, 'API URL:', this.apiUrl);
             this.hideTypingIndicator();
-            this.addMessage("Sorry, I'm having trouble connecting. Please try again in a moment.", 'bot');
+            this.addMessage("Sorry, I can't reach the chat service. Check your connection or try again in a moment.", 'bot');
         }
     }
 
     addMessage(text, role) {
         const messagesContainer = document.getElementById('chatbotMessages');
         const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${role}`;
+        messageDiv.className = 'message ' + role;
+        messageDiv.setAttribute('role', 'article');
+        messageDiv.setAttribute('aria-label', role === 'bot' ? 'Web Baba says' : 'You said');
         
         if (role === 'bot') {
             messageDiv.innerHTML = `
                 <div class="message-content">
-                    <div class="avatar bot-avatar">WB</div>
+                    <div class="avatar bot-avatar" aria-hidden="true">WB</div>
                     <div class="message-bubble">${this.escapeHtml(text)}</div>
                 </div>
             `;
@@ -2090,15 +2153,13 @@ class WebBabaChatbot {
             messageDiv.innerHTML = `
                 <div class="message-content">
                     <div class="message-bubble">${this.escapeHtml(text)}</div>
-                    <div class="avatar user-avatar">You</div>
+                    <div class="avatar user-avatar" aria-hidden="true">You</div>
                 </div>
             `;
         }
         
         messagesContainer.appendChild(messageDiv);
         this.scrollToBottom();
-        
-        // Save to conversation
         this.conversation.push({ role, text });
         this.saveConversation();
     }

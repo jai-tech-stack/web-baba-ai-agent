@@ -49,7 +49,7 @@ In Railway → your service → **Variables**, ensure:
 
 ## 4. After deploy
 
-- Your API URL will be like: `https://web-production-98b93.up.railway.app` (or the one Railway shows).
+- Your API URL will be like: `https://web-production-b2647.up.railway.app` (or the one Railway shows).
 - Test: **GET** `https://YOUR-URL/health` → should return `{"status":"healthy"}`.
 - The site (index.php) already uses the chatbot API URL; if you changed the project name on Railway, update the `apiUrl` in **index.php** and **integration-script.html** to the new URL.
 

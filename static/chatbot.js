@@ -5,7 +5,7 @@
 
 class WebBabaChatbot {
     constructor(config = {}) {
-        this.apiUrl = config.apiUrl || 'https://web-production-98b93.up.railway.app';
+        this.apiUrl = config.apiUrl || 'https://web-production-b2647.up.railway.app';
         this.userId = this.getUserId();
         this.isOpen = false;
         this.isLeadFormVisible = false;
